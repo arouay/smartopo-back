@@ -13,35 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smartopo.DAO.ProjetDAO;
-import com.smartopo.entities.Projet;
+import com.smartopo.DAO.EmployeDAO;
+
+import com.smartopo.entities.Employe;
 
 @RestController
-@RequestMapping(value = "/projets/")
-public class ProjetController {
+@RequestMapping(value = "/employes/")
+
+public class EmployeController {
+
 	@Autowired
-	private ProjetDAO projetDAO;
+	private EmployeDAO employeDAO;
 	
 	@GetMapping(value = "all")
-	public List<Projet> getProjets(){
-		return projetDAO.findAll();
+	public List<Employe> getEmployes(){
+		return employeDAO.findAll();
 	}
 	
 	@GetMapping(value = "all/{id}")
-	public Optional<Projet> getProjet(@PathVariable Long id) {
-		return projetDAO.findById(id);
+	public Optional<Employe> getEmploye(@PathVariable Long id) {
+		return employeDAO.findById(id);
 	} 
 	@DeleteMapping(value = "delete/{id}")
-	public boolean deleteProjet(@PathVariable Long id) {
-		projetDAO.deleteById(id);
+	public boolean deleteEmploye(@PathVariable Long id) {
+		employeDAO.deleteById(id);
 		return true;
 	}
 	@PutMapping(value = "update")
-	public Projet updateProjet(@RequestBody Projet projet) {
-		return projetDAO.save(projet);
+	public Employe updateEmploye(@RequestBody Employe employe) {
+		return employeDAO.save(employe);
 	}
 	@PostMapping(value = "new")
-	public Projet createProjet(@RequestBody Projet projet) {
-		return projetDAO.save(projet);
+	public Employe createEmploye(@RequestBody Employe employe) {
+		return employeDAO.save(employe);
 	}
+
 }
