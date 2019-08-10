@@ -14,6 +14,7 @@ public class Employe {
 	
 	private String cin;
 	private String nom;
+	private String prenom;
 	private String fonction;
 	private Date date_naissance;
 	private int annees_experiences;
@@ -26,11 +27,12 @@ public class Employe {
 		super();
 	}
 	public Employe(Long id, String cin, String nom, String fonction, Date date_naissance, int annees_experiences,
-			Date date_embauche, String email, String adresse, String numero_telephone) {
+			Date date_embauche, String email, String adresse, String numero_telephone, String prenom) {
 		super();
 		this.id = id;
 		this.cin = cin;
 		this.nom = nom;
+		this.prenom = prenom;
 		this.fonction = fonction;
 		this.date_naissance = date_naissance;
 		this.annees_experiences = annees_experiences;
@@ -38,6 +40,12 @@ public class Employe {
 		this.email = email;
 		this.adresse = adresse;
 		this.numero_telephone = numero_telephone;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 	public Long getId() {
 		return id;
