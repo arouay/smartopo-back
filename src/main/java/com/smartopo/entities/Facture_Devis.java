@@ -1,14 +1,12 @@
 package com.smartopo.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Facture_Devis {
@@ -19,18 +17,25 @@ public class Facture_Devis {
 	private Date date;
 	private String type;
 	
-	@OneToMany
-	private List<Article> articles = new ArrayList<>();
+	@ManyToOne
+	private Client client;
 	
 	public Facture_Devis() {
 		super();
 	}
-	public Facture_Devis(Long id, String objet, Date date, String type) {
+	public Facture_Devis(Long id, String objet, Date date, String type, Client client) {
 		super();
 		this.id = id;
 		this.objet = objet;
 		this.date = date;
 		this.type = type;
+		this.client = client;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	public Long getId() {
 		return id;

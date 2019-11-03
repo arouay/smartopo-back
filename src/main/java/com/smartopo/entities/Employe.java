@@ -22,13 +22,21 @@ public class Employe {
 	private String email;
 	private String adresse;
 	private String numero_telephone;
+	private String mdp;
 	
+	public String getMdp() {
+		return mdp;
+	}
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
 	public Employe() {
 		super();
 	}
 	public Employe(Long id, String cin, String nom, String fonction, Date date_naissance, int annees_experiences,
-			Date date_embauche, String email, String adresse, String numero_telephone, String prenom) {
+			Date date_embauche, String email, String adresse, String numero_telephone, String prenom, String mdp) {
 		super();
+		this.mdp = mdp;
 		this.id = id;
 		this.cin = cin;
 		this.nom = nom;

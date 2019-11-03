@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Article {
@@ -14,15 +15,25 @@ public class Article {
 	private int quantite;
 	private double prix;
 	
+	@ManyToOne
+	private Facture_Devis facture_devis;
+	
 	public Article() {
 		super();
 	}
-	public Article(Long id, String designation, int quantite, double prix) {
+	public Article(Long id, String designation, int quantite, double prix, Facture_Devis fd) {
 		super();
 		this.id = id;
 		this.designation = designation;
 		this.quantite = quantite;
 		this.prix = prix;
+		this.facture_devis = fd;
+	}
+	public Facture_Devis getFacture_devis() {
+		return facture_devis;
+	}
+	public void setFacture_devis(Facture_Devis facture_devis) {
+		this.facture_devis = facture_devis;
 	}
 	public Long getId() {
 		return id;

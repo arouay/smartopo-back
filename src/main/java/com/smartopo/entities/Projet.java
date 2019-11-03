@@ -1,14 +1,11 @@
 package com.smartopo.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Projet {
@@ -22,18 +19,12 @@ public class Projet {
 	private String titre_foncier;
 	
 	@ManyToOne
-	private TypeProjet typeProjet = new TypeProjet();
-	
-	@OneToMany
-	private List<Recette> recettes = new ArrayList<>();
-	
-	@OneToMany
-	private List<Phase> phases = new ArrayList<>();
-	
+	private TypeProjet typeProjet;
+	@ManyToOne
+	private Client client;
 	
 	public Projet(Long id, String intitule, int duree_realisation_estimee, Date date_commencement,
-			double montant_estime, String titre_foncier, TypeProjet typeProjet, List<Recette> recettes,
-			List<Phase> phases) {
+			double montant_estime, String titre_foncier, TypeProjet typeProjet, Client client) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -42,8 +33,7 @@ public class Projet {
 		this.montant_estime = montant_estime;
 		this.titre_foncier = titre_foncier;
 		this.typeProjet = typeProjet;
-		this.recettes = recettes;
-		this.phases = phases;
+		this.client = client;
 	}
 	public TypeProjet getTypeProjet() {
 		return typeProjet;
@@ -51,17 +41,12 @@ public class Projet {
 	public void setTypeProjet(TypeProjet typeProjet) {
 		this.typeProjet = typeProjet;
 	}
-	public List<Recette> getRecettes() {
-		return recettes;
+	
+	public Client getClient() {
+		return client;
 	}
-	public void setRecettes(List<Recette> recettes) {
-		this.recettes = recettes;
-	}
-	public List<Phase> getPhases() {
-		return phases;
-	}
-	public void setPhases(List<Phase> phases) {
-		this.phases = phases;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	public Projet() {
 		super();

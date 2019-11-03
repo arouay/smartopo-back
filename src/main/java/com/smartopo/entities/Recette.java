@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Recette {
@@ -15,15 +16,26 @@ public class Recette {
 	private String intitule;
 	private double montant;
 	private Date date;
+	
+	@ManyToOne
+	private Projet projet;
+	
 	public Recette() {
 		super();
 	}
-	public Recette(Long id, String intitule, double montant, Date date) {
+	public Recette(Long id, String intitule, double montant, Date date, Projet projet) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
 		this.montant = montant;
 		this.date = date;
+		this.projet = projet;
+	}
+	public Projet getProjet() {
+		return projet;
+	}
+	public void setProjet(Projet projet) {
+		this.projet = projet;
 	}
 	public Long getId() {
 		return id;

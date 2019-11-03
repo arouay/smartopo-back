@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,9 +15,11 @@ public class Etat_Materiel {
 	private Long id;
 	
 	@ManyToOne
+	@JoinColumn(name="materiel_id")
 	private Materiel materiel;
 	
 	@ManyToOne
+	@JoinColumn(name="tache_id")
 	private Tache tache;
 	
 	private Date date;

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Materiel {
@@ -16,12 +17,13 @@ public class Materiel {
 	private String marque;
 	private boolean etat_achat;
 	private Date date_achat;
-	private String image_neuf;
+	@Lob
+	private byte[] image_neuf;
 	private int quantite;
 	public Materiel() {
 		super();
 	}
-	public Materiel(Long id, String nom, String marque, boolean etat_achat, Date date_achat, String image_neuf,
+	public Materiel(Long id, String nom, String marque, boolean etat_achat, Date date_achat, byte[] image_neuf,
 			int quantite) {
 		super();
 		this.id = id;
@@ -62,10 +64,10 @@ public class Materiel {
 	public void setDate_achat(Date date_achat) {
 		this.date_achat = date_achat;
 	}
-	public String getImage_neuf() {
+	public byte[] getImage_neuf() {
 		return image_neuf;
 	}
-	public void setImage_neuf(String image_neuf) {
+	public void setImage_neuf(byte[] image_neuf) {
 		this.image_neuf = image_neuf;
 	}
 	public int getQuantite() {
